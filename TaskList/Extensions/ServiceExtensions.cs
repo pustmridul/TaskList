@@ -1,4 +1,9 @@
-﻿namespace TaskList.Extensions
+﻿using Contracts;
+using Contracts.Interfaces;
+using LoggerService;
+using LoggerService.Services;
+
+namespace TaskList.Extensions
 {
     public static class ServiceExtensions
     {
@@ -19,6 +24,10 @@
             {
 
             });
+        }
+        public static void ConfigureLoggerService(this IServiceCollection services)
+        {
+            services.AddSingleton<ILoggerManager, LoggerManager>();
         }
     }
 }
