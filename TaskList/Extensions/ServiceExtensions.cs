@@ -43,7 +43,10 @@ namespace TaskList.Extensions
 
         public static void ConfigureRepositoryWrapper(this IServiceCollection services)
         {
+            services.AddTransient<IOwnerRepository, OwnerRepository>();
+            services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+
         }
     }
 }
