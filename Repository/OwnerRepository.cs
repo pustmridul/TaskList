@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -25,13 +26,13 @@ namespace Repository
 
         public Owner GetOwnerById(Guid ownerId)
         {
-            return FindByCondition(owner => owner.Id.Equals(ownerId))
+            return FindByCondition(owner => owner.OwnerId.Equals(ownerId))
                 .FirstOrDefault();
         }
 
         public Owner GetOwnerWithDetails(Guid ownerId)
         {
-            return FindByCondition(owner => owner.Id.Equals(ownerId))
+            return FindByCondition(owner => owner.OwnerId.Equals(ownerId))
                 .Include(ac => ac.Accounts)
                 .FirstOrDefault();
         }
